@@ -43,7 +43,13 @@ def _get_health_color(score: float) -> str:
     return "#e74c3c"
 
 
-def _get_coach_advice(eye_status: str, posture_status: str) -> tuple:
+def _get_coach_advice(eye_status: str, posture_status: str, face_detected: bool) -> tuple:
+    if not face_detected:
+        return (
+            "No face detected. Please position yourself in front of the camera "
+            "so eye and posture monitoring can resume.",
+            "#7f8c8d",
+        )
     eye_bad = eye_status == "Strained"
     posture_bad = posture_status == "Slouching"
 
