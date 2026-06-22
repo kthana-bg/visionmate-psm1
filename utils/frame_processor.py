@@ -216,7 +216,7 @@ def process_frame(
     eye_color = (0, 255, 0) if eye_status == "Normal" else (0, 0, 255)
     posture_color = (0, 255, 0) if posture_status == "Good" else (0, 0, 255)
 
-    cv2.putText(frame_bgr, f"Eye: {eye_status}", (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.6, eye_color, 2))
+    cv2.putText(frame_bgr, f"Eye: {eye_status}", (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.6, eye_color, 2)
     cv2.putText(frame_bgr, f"Posture: {posture_status}", (10, 70), cv2.FONT_HERSHEY_SIMPLEX, 0.6, posture_color, 2)
 
     result.frame_bgr = frame_bgr
