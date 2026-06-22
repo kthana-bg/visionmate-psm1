@@ -136,7 +136,7 @@ def _render_metrics_panel(result: FrameResult, eye_model_name: str, posture_mode
         _get_status_color(result.posture_status, "Good"),
         f"Neck angle: {result.posture_angle:.1f} deg  |  Confidence: {result.posture_confidence:.2f}",
     )
-    advice, advice_color = _get_coach_advice(result.eye_status, result.posture_status)
+    advice, advice_color = _get_coach_advice(result.eye_status, result.posture_status, result.face_detected)
     _coach_card(advice, advice_color)
     st.markdown(
         f"""
