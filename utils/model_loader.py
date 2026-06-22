@@ -54,9 +54,12 @@ _DEMO_RESULTS = {
 }
 
 
-def _load_weights_from_h5(model, h5_path: str):
+def _load_weights_from_h5(model, weights_path: str):
     try:
-        model.load_weights(h5_path, by_name=True)
+        if weights_path.endswith(".keras"):
+            model.load_weights(weights_path)
+        else:
+            model.load_weights(weights_path, by_name=True)
     except Exception as e:
         print(f"  Failed to load weights: {e}")
 
@@ -234,6 +237,7 @@ _EYE_BUILDERS = {
 
 _POSTURE_KERAS_BUILDERS = {
     "Custom Residual DNN": _build_custom_residual_dnn,
+    "YOLOv8-Pose / MoveNet DNN": _build_yolo_movenet_dnn,
 }
 
 
@@ -264,14 +268,6 @@ def _load_posture_model(model_name: str, model_path: str):
     if model_name == "Random Forest Classifier":
         try:
             return joblib.load(model_path)
-        except Exception as e:
-            print(f"Failed to load {model_name}: {e}")
-            return None
-
-    if model_name == "YOLOv8-Pose / MoveNet DNN":
-        try:
-            import tensorflow as tf
-            return tf.keras.models.load_model(model_path)
         except Exception as e:
             print(f"Failed to load {model_name}: {e}")
             return None
