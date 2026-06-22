@@ -1,8 +1,8 @@
 import time
 import streamlit.components.v1 as components
 
-TRIGGER_DELAY_SECONDS = 20
-COOLDOWN_SECONDS = 10
+TRIGGER_DELAY_SECONDS = 10
+COOLDOWN_SECONDS = 5
 
 
 class BeepAlert:
